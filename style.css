@@ -1,0 +1,40 @@
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --main-color: #763fad;
+  --secondary-color: #d0a9dd;
+  --tertiary-colo: #ff9800;  
+  --light-color: #ffffff;
+  --gray-color: #B1B8C6;
+  --dark-color: #202329;
+
+  --font-family-titles: 'Dosis', sans-serif;
+  --font-family-text: 'Red Hat Display', sans-serif;
+
+  --title-weight-bold: 800;
+  --title-weight-medium: 500;
+
+  --text-weight-regular: 400;
+  --text-weight-light: 300;
+}
+
+/* Header */
+
+/* Main */
+
+/* Details */
+
+/* Navigation */
+
+.inactive {
+  display: none;
+}
