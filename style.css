@@ -17,7 +17,7 @@ html {
   --gray-color: #B1B8C6;
   --dark-color: #202329;
 
-  --font-family-titles: 'Dosis', sans-serif;
+  --font-family-title: 'Dosis', sans-serif;
   --font-family-text: 'Red Hat Display', sans-serif;
 
   --title-weight-bold: 800;
@@ -25,6 +25,42 @@ html {
 
   --text-weight-regular: 400;
   --text-weight-light: 300;
+
+  --title-size-h1: 3.2rem;
+  --title-size-h2: 2.4rem;
+  --title-size-h3: 1.6rem;
+  --title-size-h4: 1.2rem;
+
+  --text-size: 1.4rem;
+}
+
+h1, h2, h3, h4, li{
+  font-family: var(--font-family-title);
+}
+h1 {
+  font-size: var(--title-size-h1);
+  font-weight: var(--title-weight-bold);
+  color: var(--main-color);
+}
+h2 {
+  font-size: var(--title-size-h2);
+  font-weight: var(--title-weight-bold);
+  color: var(--main-color);
+}
+h3, li {
+  font-size: var(--title-size-h3);
+  font-weight: var(--title-weight-bold);
+  color: var(--light-color);
+}
+h4 {
+  font-size: var(--title-size-h4);
+  font-weight: var(--title-weight-medium);
+  color: var(--gray-color);
+}
+p {
+  font-size: var(--text-size);
+  font-family: var(--font-family-text);
+  font-weight: var(--text-weight-regular);
 }
 
 /* Header */
