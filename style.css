@@ -118,7 +118,7 @@ li {
   width: 80%;
   text-align: center;
 }
-.generic-title-section p {
+#back-arrow {
   font-weight: var(--title-weight-bold);
   color: var(--main-color);
   transform: scale(2.5);
