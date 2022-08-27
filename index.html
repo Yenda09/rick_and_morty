@@ -14,7 +14,7 @@
   <header>
     <nav class="header-nav">
       <div class="nav-img-container">
-        <img src="./rickandmorty-logo.png" alt="" width="50px">
+        <img src="https://rickandmortyapi.com/api/character/avatar/19.jpeg" alt="" width="50px">
       </div>
       <ul class="nav-list-container">
         <li id="characters-link">Characters</li>
@@ -25,23 +25,24 @@
   </header>
 
   <main>
-    <section class="main-title-section inactive">
+    <section class="main-title-section">
       <h1>Rick and Morty API</h1>
       <div class="main-title-img-container">
+        <img>
       </div>
     </section>
-    <section class="generic-title-section">
+    <section class="generic-title-section inactive">
       <p id="back-arrow"><</p>
       <h2>Characters</h2>
     </section>
 
-    <article class="main-article--preview inactive">
+    <article class="main-article--preview">
       <div class="preview-card-container">
         <div class="preview-img-container">
         </div>
         <div class="preview-description-container">
           <h3>Name</h3>
-          <p>state - type</p>
+          <p>status - type</p>
 
           <h4>Last known location:</h4>
           <p>Location</p>
@@ -56,7 +57,7 @@
         </div>
         <div class="preview-description-container">
           <h3>Name</h3>
-          <p>state - type</p>
+          <p>status - type</p>
 
           <h4>Last known location:</h4>
           <p>Location</p>
@@ -67,13 +68,13 @@
       </div>
     </article>
 
-    <article class="main-article--details">
+    <article class="main-article--details inactive">
       <div class="details-card-container">
         <div class="details-img-container">
         </div>
         <div class="details--description-container">
           <h3>Name</h3>
-          <p>state - type</p>
+          <p>status - type</p>
 
           <h4>Last known location:</h4>
           <p>Location</p>
@@ -88,6 +89,8 @@
     </article>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./domNodes.js"></script>
+  <script src="./navigator.js"></script>
   <script src="./main.js"></script>
 </body>
 </html>
