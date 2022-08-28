@@ -30,8 +30,10 @@ function navigator (){
     return;
   } else {
     homePage();
-    return;
-  }
+  };
+
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 };
 
 // Utils
@@ -65,6 +67,7 @@ function charactersPage (){
 };
 
 function characterDetailPage (){
+  genericTitle.innerText = 'Character';
   loadDetailsPages();
 };
 
@@ -75,6 +78,7 @@ function episodesPage (){
 };
 
 function episodeDetailPage (){
+  genericTitle.innerText = 'Episode';
   loadDetailsPages();
 }
 
@@ -85,5 +89,6 @@ function locationsPage (){
 };
 
 function locationDetailPage (){
+  genericTitle.innerText = 'Location';
   loadDetailsPages();
 };

@@ -35,8 +35,8 @@ function createCharacters (characters, container){
     locationP.addEventListener('click', () => {
       const urlRequired = character.location.url.split('/');
       const urlRequiredID = urlRequired[urlRequired.length - 1];
-      getLocations(urlRequiredID);
       location.hash = `#location=${urlRequiredID}`;
+      getLocations(urlRequiredID);
     });
 
     const firstSeenIn = document.createElement('h4');
@@ -46,8 +46,8 @@ function createCharacters (characters, container){
     seenInP.addEventListener('click', () => {
       const urlRequired = character.episode[0].split('/');
       const urlRequiredID = urlRequired[urlRequired.length - 1];
-      getEpisodes(urlRequiredID);
       location.hash = `#episode=${urlRequiredID}`;
+      getEpisodes(urlRequiredID);
     });
 
     previewDescriptionContainer.appendChild(nameH3);
@@ -85,7 +85,10 @@ function createLocations (locations, container){
     nameH4.innerText = 'Name';
     const nameP = document.createElement('p');
     nameP.innerText = locationObj.name;
-    nameP.addEventListener('click', () => location.hash = `#location=${locationObj.id}`);
+    nameP.addEventListener('click', () => {
+      location.hash = `#location=${locationObj.id}`;
+      getLocations(locationObj.id);
+    });
 
     const typeLocation = document.createElement('h4');
     typeLocation.innerText = 'Type:';
@@ -132,7 +135,10 @@ function createEpisodes (episodes, container){
     nameH4.innerText = 'Name';
     const nameP = document.createElement('p');
     nameP.innerText = episode.name;
-    nameP.addEventListener('click', () => location.hash = `#episode=${episode.id}`);
+    nameP.addEventListener('click', () => {
+      location.hash = `#episode=${episode.id}`;
+      getEpisodes(episode.id);
+    });
 
     const airDate = document.createElement('h4');
     airDate.innerText = 'Air date:';
