@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 
+navLogo.addEventListener('click', () => location.hash = '#home');
+
 charactersLink.addEventListener('click', () => location.hash = '#characters');
 episodesLink.addEventListener('click', () => location.hash = '#episodes');
 locationsLink.addEventListener('click', () => location.hash = '#locations');
@@ -32,6 +34,7 @@ function navigator (){
   }
 };
 
+// Utils
 function loadPreviewPages (){
   mainTitleSection.classList.add('inactive');
   genericTitleSection.classList.remove('inactive');
@@ -46,6 +49,7 @@ function loadDetailsPages (){
   articleDetails.classList.remove('inactive');
 }
 
+// Loading Pages
 function homePage (){
   mainTitleSection.classList.remove('inactive');
   genericTitleSection.classList.add('inactive');
