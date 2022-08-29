@@ -338,7 +338,7 @@ async function getCharacters (id){
 
     createDetailsCharacter(characterDetail, detailsCardContainer);
   }  else {
-    const { data } = await api('/character/1,2,3,4,5,6');
+    const { data } = await api('/character/1,2,3,4,5,6,7,8');
     const charactersArray = data;
 
     createCharacters(charactersArray, articlePreview);

@@ -1,0 +1,17 @@
+.header-nav {
+  justify-content: space-around;
+}
+.nav-list-container {
+  width: 30%;
+}
+.main-section {
+  min-height: 405px;
+}
+.main-article--preview {
+  min-width: 650px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.details-card-container {
+  max-width: 400px;
+}
