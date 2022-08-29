@@ -10,6 +10,7 @@ function createCharacters (characters, container){
   characters.forEach(character => {
     const previewCardContainer = document.createElement('div');
     previewCardContainer.classList.add('preview-card-container');
+    previewCardContainer.setAttribute('load', 'lazy');
 
     const previewImageContainer = document.createElement('div');
     previewImageContainer.classList.add('preview-img-container');
@@ -24,7 +25,10 @@ function createCharacters (characters, container){
 
     const nameH3 = document.createElement('h3');
     nameH3.innerText = character.name;
-    nameH3.addEventListener('click', () => location.hash = `#character=${character.id}`)
+    nameH3.addEventListener('click', () => {
+      location.hash = `#character=${character.id}`
+      getCharacters(character.id);
+    })
     const statusAndSpecie = document.createElement('p');
     statusAndSpecie.innerText = `${character.status} - ${character.species}`;
 
@@ -69,6 +73,7 @@ function createLocations (locations, container){
   locations.forEach(locationObj => {
     const previewCardContainer = document.createElement('div');
     previewCardContainer.classList.add('preview-card-container');
+    previewCardContainer.setAttribute('load', 'lazy');
 
     const previewImageContainer = document.createElement('div');
     previewImageContainer.classList.add('preview-img-container');
@@ -119,6 +124,7 @@ function createEpisodes (episodes, container){
   episodes.forEach(episode => {
     const previewCardContainer = document.createElement('div');
     previewCardContainer.classList.add('preview-card-container');
+    previewCardContainer.setAttribute('load', 'lazy');
 
     const previewImageContainer = document.createElement('div');
     previewImageContainer.classList.add('preview-img-container');
@@ -157,12 +163,81 @@ function createEpisodes (episodes, container){
   });
 };
 
-function createDetailsLocations (obj, container){
+function createDetailsCharacter (obj, container){
   container.innerHTML = '';
   
   const detailsImgContainer = document.createElement('div');
   detailsImgContainer.classList.add('details-img-container')
   const detailsImg = document.createElement('img');
+  detailsImg.classList.add('details-card-container--character');
+  detailsImg.setAttribute('src', obj.image);
+
+  detailsImgContainer.appendChild(detailsImg);
+
+  const detailsDescriptionContainer = document.createElement('div');
+  detailsDescriptionContainer.classList.add('details-description-container');
+
+  const nameCharacter = document.createElement('h4');
+  nameCharacter.innerText = 'Name:';
+  const nameCharacterP = document.createElement('p');
+  nameCharacterP.innerText = obj.name;
+
+  const idCharacter = document.createElement('h4');
+  idCharacter.innerText = 'Id:'
+  const idCharacterP = document.createElement('p');
+  idCharacterP.innerText = obj.id;
+
+  const statusCharacter = document.createElement('h4');
+  statusCharacter.innerText = 'Status:';
+  const statusCharacterP = document.createElement('p');
+  statusCharacterP.innerText = obj.status;
+
+  const specieCharacter = document.createElement('h4');
+  specieCharacter.innerText = 'Specie:'
+  const specieCharacterP = document.createElement('p');
+  specieCharacterP.innerText = obj.species;
+
+  const genderCharacter = document.createElement('h4');
+  genderCharacter.innerText = 'Gender:'
+  const genderCharacterP = document.createElement('p');
+  genderCharacterP.innerText = obj.gender;
+
+  const originCharacter = document.createElement('h4');
+  originCharacter.innerText = 'Origin:'
+  const originCharacterP = document.createElement('p');
+  originCharacterP.innerText = obj.origin.name;
+
+  const locationCharacter = document.createElement('h4');
+  locationCharacter.innerText = 'Location:'
+  const locationCharacterP = document.createElement('p');
+  locationCharacterP.innerText = obj.location.name;
+
+  detailsDescriptionContainer.appendChild(nameCharacter);
+  detailsDescriptionContainer.appendChild(nameCharacterP);
+  detailsDescriptionContainer.appendChild(idCharacter);
+  detailsDescriptionContainer.appendChild(idCharacterP);
+  detailsDescriptionContainer.appendChild(statusCharacter);
+  detailsDescriptionContainer.appendChild(statusCharacterP);
+  detailsDescriptionContainer.appendChild(specieCharacter);
+  detailsDescriptionContainer.appendChild(specieCharacterP);
+  detailsDescriptionContainer.appendChild(genderCharacter);
+  detailsDescriptionContainer.appendChild(genderCharacterP);
+  detailsDescriptionContainer.appendChild(originCharacter);
+  detailsDescriptionContainer.appendChild(originCharacterP);
+  detailsDescriptionContainer.appendChild(locationCharacter);
+  detailsDescriptionContainer.appendChild(locationCharacterP);
+
+  container.appendChild(detailsImgContainer);
+  container.appendChild(detailsDescriptionContainer);
+};
+
+function createDetailsLocation (obj, container){
+  container.innerHTML = '';
+  
+  const detailsImgContainer = document.createElement('div');
+  detailsImgContainer.classList.add('details-img-container')
+  const detailsImg = document.createElement('img');
+  detailsImg.classList.add('generic-img');
   detailsImg.setAttribute('src', './rickandmorty.png');
 
   detailsImgContainer.appendChild(detailsImg);
@@ -209,6 +284,7 @@ function createDetailsEpisode (obj, container){
   const detailsImgContainer = document.createElement('div');
   detailsImgContainer.classList.add('details-img-container');
   const detailsImg = document.createElement('img');
+  detailsImg.classList.add('generic-img');
   detailsImg.setAttribute('src', './rickandmorty.png');
 
   detailsImgContainer.appendChild(detailsImg);
@@ -250,13 +326,18 @@ function createDetailsEpisode (obj, container){
 };
 
 // API calls
-async function getCharacters (){
+async function getCharacters (id){
   if (location.hash.startsWith('#characters')){
     const { data } = await api('/character');
     const charactersArray = data.results;
 
     createCharacters(charactersArray, articlePreview);
-  } else {
+  } else if (location.hash.startsWith('#character=')){
+    const { data } = await api(`/character/${id}`);
+    const characterDetail = data;
+
+    createDetailsCharacter(characterDetail, detailsCardContainer);
+  }  else {
     const { data } = await api('/character/1,2,3,4,5,6');
     const charactersArray = data;
 
@@ -274,7 +355,7 @@ async function getLocations(id){
   const { data } = await api(`/location/${id}`);
   const locationDetail = data;
 
-    createDetailsLocations(locationDetail, detailsCardContainer);
+    createDetailsLocation(locationDetail, detailsCardContainer);
   };
 }
 

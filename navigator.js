@@ -12,22 +12,16 @@ backArrow.addEventListener('click', () => window.history.back());
 function navigator (){
   if (location.hash.startsWith('#characters')){
     charactersPage();
-    return;
   } else if (location.hash.startsWith('#character=')){
     characterDetailPage();
-    return;
   } else if (location.hash.startsWith('#episodes')){
     episodesPage();
-    return;
   } else if (location.hash.startsWith('#episode=')){
     episodeDetailPage();
-    return;
   }else if (location.hash.startsWith('#locations')){
     locationsPage();
-    return;
   } else if (location.hash.startsWith('#location=')){
     locationDetailPage();
-    return;
   } else {
     homePage();
   };
